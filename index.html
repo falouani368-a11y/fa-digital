@@ -40,10 +40,9 @@
     }
     nav.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,.4); }
 
-    /* Logo nav : image + texte "FA Digital" */
     .nav-brand {
       display: flex; align-items: center; gap: .75rem;
-      text-decoration: none;
+      text-decoration: none; flex-shrink: 0;
     }
     .logo-img { height: 46px; width: auto; display: block; }
     .nav-brand-text {
@@ -53,10 +52,10 @@
       letter-spacing: -.02em;
       color: var(--text);
       line-height: 1;
+      white-space: nowrap;
     }
     .nav-brand-text span { color: var(--accent); }
 
-    /* liens nav */
     .nav-center {
       display: flex; align-items: center;
       gap: .2rem; list-style: none;
@@ -64,7 +63,7 @@
     .nav-center a {
       color: var(--muted); text-decoration: none; font-size: .88rem;
       letter-spacing: .02em; padding: .45rem .9rem; border-radius: 8px;
-      transition: color .2s, background .2s;
+      transition: color .2s, background .2s; white-space: nowrap;
     }
     .nav-center a:hover { color: var(--text); background: rgba(255,255,255,.04); }
     .nav-center a.active { color: var(--accent); }
@@ -73,6 +72,7 @@
     .burger {
       display: none; flex-direction: column; gap: 5px;
       background: none; border: none; cursor: pointer; padding: 4px;
+      flex-shrink: 0;
     }
     .burger span {
       display: block; width: 24px; height: 2px;
@@ -109,7 +109,7 @@
 
     /* ══ BACK TO TOP ══ */
     #backTop {
-      position: fixed; bottom: 2rem; right: 2rem; z-index: 300;
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 300;
       width: 44px; height: 44px; border-radius: 50%;
       background: var(--accent); color: #000;
       border: none; cursor: pointer;
@@ -151,7 +151,6 @@
       position: relative; z-index: 1;
     }
 
-    /* logo hero frame — agrandi */
     .hero-logo-wrap { display: flex; align-items: center; justify-content: center; }
     .hero-logo-frame {
       position: relative; padding: 3.5rem 4rem;
@@ -179,7 +178,6 @@
     .hero-dot.left  { left: -4px; top: 50%; transform: translateY(-50%); }
     .hero-dot.right { right: -4px; top: 50%; transform: translateY(-50%); }
 
-    /* logo agrandi + texte FA Digital dessous */
     .hero-logo-inner { display: flex; flex-direction: column; align-items: center; gap: 1.2rem; }
     .hero-logo-frame img { width: 380px; max-width: 100%; height: auto; display: block; }
     .hero-logo-name {
@@ -194,7 +192,6 @@
 
     @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
 
-    /* hero texte */
     .hero-tag {
       display: inline-flex; align-items: center; gap: .5rem;
       background: rgba(0,230,118,.07); border: 1px solid rgba(0,230,118,.18);
@@ -220,19 +217,22 @@
       padding: .85rem 2rem; border-radius: 999px; font-size: .92rem;
       text-decoration: none; transition: transform .2s, box-shadow .2s;
       box-shadow: 0 0 28px rgba(0,230,118,.25);
+      /* ── MOBILE TAP TARGET ── */
+      min-height: 44px; display: inline-flex; align-items: center;
     }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 44px rgba(0,230,118,.5); }
     .btn-ghost {
       border: 1px solid var(--border); color: var(--text);
       padding: .85rem 2rem; border-radius: 999px; font-size: .92rem;
       text-decoration: none; transition: border-color .2s, color .2s;
+      min-height: 44px; display: inline-flex; align-items: center;
     }
     .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* stats hero */
     .hero-stats {
       display: flex; gap: 2rem; margin-top: 2.5rem;
       padding-top: 2rem; border-top: 1px solid var(--border);
+      flex-wrap: wrap;
     }
     .hstat { display: flex; flex-direction: column; gap: .15rem; }
     .hstat-num {
@@ -274,12 +274,11 @@
       border-color: rgba(0,230,118,.22); transform: translateY(-5px);
       box-shadow: 0 16px 40px rgba(0,0,0,.3);
     }
-    .service-card:hover::after { transform: scaleX(1); }
     .service-icon {
       width: 46px; height: 46px; border-radius: 11px;
       background: rgba(0,230,118,.08); border: 1px solid rgba(0,230,118,.15);
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.25rem; margin-bottom: 1.1rem;
+      font-size: 1.25rem; margin-bottom: 1.1rem; flex-shrink: 0;
     }
     .service-card h3 { font-family: 'Syne',sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: .45rem; }
     .service-card p { color: var(--muted); font-size: .88rem; line-height: 1.65; }
@@ -287,6 +286,12 @@
       display: inline-block; margin-top: .9rem;
       font-size: .69rem; padding: .18rem .65rem; border-radius: 999px;
       background: rgba(0,230,118,.07); color: var(--accent); border: 1px solid rgba(0,230,118,.14);
+    }
+
+    /* ══ À PROPOS ══ */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
     }
 
     /* ══ MODÈLE DESIGN ══ */
@@ -299,6 +304,8 @@
       border: 1px solid var(--border); background: transparent;
       color: var(--muted); cursor: pointer; transition: all .15s;
       font-family: 'DM Sans', sans-serif;
+      /* ── MOBILE TAP TARGET ── */
+      min-height: 40px;
     }
     .df-btn.active, .df-btn:hover {
       background: rgba(0,230,118,.08); color: var(--accent);
@@ -319,6 +326,7 @@
     .design-footer {
       padding: .75rem 1rem; display: flex; align-items: center;
       justify-content: space-between; border-top: 1px solid var(--border);
+      gap: .5rem;
     }
     .design-name { font-family: 'Syne', sans-serif; font-size: .9rem; font-weight: 700; margin-bottom: .2rem; }
     .design-tag {
@@ -328,7 +336,8 @@
     .design-cta {
       font-size: .78rem; font-weight: 700; color: var(--accent);
       text-decoration: none; border: 1px solid rgba(0,230,118,.3);
-      padding: .3rem .85rem; border-radius: 999px; transition: background .2s; white-space: nowrap;
+      padding: .35rem .85rem; border-radius: 999px; transition: background .2s; white-space: nowrap;
+      min-height: 36px; display: inline-flex; align-items: center; flex-shrink: 0;
     }
     .design-cta:hover { background: rgba(0,230,118,.1); }
 
@@ -351,8 +360,9 @@
     .proj-link {
       display: inline-flex; align-items: center; gap: 5px;
       font-size: .78rem; font-weight: 600; color: var(--accent);
-      border: 1px solid rgba(0,230,118,.25); padding: .3rem .75rem;
+      border: 1px solid rgba(0,230,118,.25); padding: .35rem .75rem;
       border-radius: 999px; text-decoration: none; transition: background .2s;
+      min-height: 36px;
     }
     .proj-link:hover { background: rgba(0,230,118,.08); }
     .proj-badge {
@@ -427,6 +437,7 @@
       display: block; margin-top: 1.6rem; text-align: center;
       padding: .78rem; border-radius: 999px; font-weight: 700; font-size: .9rem;
       text-decoration: none; transition: opacity .2s, transform .2s;
+      min-height: 44px; display: flex; align-items: center; justify-content: center;
     }
     .tarif-cta.solid { background: var(--accent); color: #000; box-shadow: 0 0 22px rgba(0,230,118,.2); }
     .tarif-cta.outline { border: 1px solid var(--border); color: var(--text); }
@@ -449,6 +460,10 @@
       color: var(--text); border-radius: 10px; padding: .85rem 1.1rem;
       font-family: 'DM Sans', sans-serif; font-size: .9rem;
       outline: none; transition: border-color .2s, box-shadow .2s; resize: vertical;
+      /* ── MOBILE: prevent iOS zoom on focus (font-size < 16px) ── */
+      font-size: 16px;
+      -webkit-appearance: none; appearance: none;
+      width: 100%;
     }
     .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus {
       border-color: var(--accent);
@@ -461,6 +476,7 @@
       padding: 1rem; border-radius: 999px; border: none; cursor: pointer;
       transition: opacity .2s, transform .2s, box-shadow .2s;
       box-shadow: 0 0 26px rgba(0,230,118,.2);
+      min-height: 54px; width: 100%;
     }
     .contact-form button:hover { opacity: .86; transform: translateY(-2px); box-shadow: 0 0 40px rgba(0,230,118,.4); }
 
@@ -478,7 +494,7 @@
     .footer-brand p { color: var(--muted); font-size: .82rem; max-width: 220px; line-height: 1.6; }
     .footer-links-col { display: flex; flex-direction: column; gap: .5rem; }
     .footer-links-col h4 { font-family: 'Syne',sans-serif; font-size: .8rem; font-weight: 700; color: var(--text); margin-bottom: .3rem; letter-spacing: .04em; text-transform: uppercase; }
-    .footer-links-col a { color: var(--muted); text-decoration: none; font-size: .83rem; transition: color .2s; }
+    .footer-links-col a { color: var(--muted); text-decoration: none; font-size: .83rem; transition: color .2s; min-height: 32px; display: flex; align-items: center; }
     .footer-links-col a:hover { color: var(--accent); }
     .footer-bottom {
       display: flex; justify-content: space-between; align-items: center;
@@ -488,50 +504,111 @@
     .footer-bottom p { color: var(--muted); font-size: .78rem; }
     .footer-bottom a { color: var(--muted); text-decoration: none; font-size: .78rem; transition: color .2s; }
     .footer-bottom a:hover { color: var(--accent); }
-    .footer-legal { display: flex; gap: 1.5rem; }
+    .footer-legal { display: flex; gap: 1.5rem; flex-wrap: wrap; }
 
     /* ══ REVEAL ══ */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ══ RESPONSIVE ══ */
+    /* ══ RESPONSIVE — TABLET (≤ 1100px) ══ */
+    @media (max-width: 1100px) {
+      .nav-center { gap: 0; }
+      .nav-center a { padding: .45rem .65rem; font-size: .82rem; }
+    }
+
+    /* ══ RESPONSIVE — TABLET (≤ 1024px) ══ */
     @media (max-width: 1024px) {
       .hero-grid { gap: 3rem; }
       .hero-logo-frame img { width: 300px; }
       .hero-logo-frame { padding: 2.5rem 3rem; }
       .hero-logo-name { font-size: 1.7rem; }
+      .about-grid { gap: 3rem; }
     }
+
+    /* ══ RESPONSIVE — PHABLET (≤ 860px) ══ */
     @media (max-width: 860px) {
       .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
       .hero-logo-wrap { order: -1; }
-      .hero-logo-frame img { width: 260px; }
+      .hero-logo-frame img { width: 240px; }
       .hero-logo-frame { padding: 2rem 2.5rem; }
       .hero-sub { max-width: 100%; margin-inline: auto; }
       .hero-btns { justify-content: center; }
       .hero-stats { justify-content: center; }
+
+      /* nav */
       .nav-center { display: none; }
       .burger { display: flex; }
       .nav-brand-text { font-size: 1.15rem; }
+
+      /* about */
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      /* services: 2 cols on tablet */
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+
+      /* design grid: 2 cols */
+      .design-grid { grid-template-columns: repeat(2, 1fr); }
+
+      /* gallery: 2 cols */
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+
+      /* tarifs: 2 cols mais le dernier pleine largeur */
+      .tarifs-grid { grid-template-columns: repeat(2, 1fr); }
+      .tarif-card:last-child { grid-column: 1 / -1; max-width: 380px; margin: 0 auto; width: 100%; }
     }
+
+    /* ══ RESPONSIVE — MOBILE (≤ 580px) ══ */
     @media (max-width: 580px) {
       section { padding: 4rem 1.2rem; }
       #accueil { padding: calc(var(--nav-h) + 2rem) 1.2rem 3rem; }
-      .hero-logo-frame img { width: 200px; }
+
+      /* hero */
+      .hero-logo-frame img { width: 180px; }
       .hero-logo-frame { padding: 1.6rem 2rem; }
-      .hero-logo-name { font-size: 1.4rem; }
+      .hero-logo-name { font-size: 1.3rem; }
+      h1 { font-size: clamp(1.8rem, 8vw, 2.4rem); }
+      .hero-btns { flex-direction: column; align-items: stretch; }
+      .btn-primary, .btn-ghost { justify-content: center; }
+      .hero-stats { flex-direction: row; gap: 1.5rem; align-items: flex-start; flex-wrap: wrap; justify-content: center; }
+
+      /* grids → 1 col */
       .form-row { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: 1fr; }
+      .design-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
       .process-steps { grid-template-columns: 1fr; }
       .process-steps::before { display: none; }
       .tarifs-grid { grid-template-columns: 1fr; }
-      .footer-top { flex-direction: column; }
+      .tarif-card:last-child { max-width: 100%; }
+
+      /* footer */
+      .footer-top { flex-direction: column; gap: 1.5rem; }
       .footer-legal { flex-direction: column; gap: .5rem; }
-      h1 { font-size: 2rem; }
-      .hero-stats { flex-direction: column; gap: 1rem; align-items: center; }
-      .nav-brand-text { display: none; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; gap: .6rem; }
+
+      /* about values: remove hover transform on mobile */
+      .about-values .service-card { transform: none !important; }
     }
+
+    /* ══ RESPONSIVE — SMALL MOBILE (≤ 380px) ══ */
     @media (max-width: 380px) {
       .logo-img { height: 36px; }
+      .nav-brand-text { display: none; }
+      .hero-logo-frame img { width: 150px; }
+      .hero-logo-frame { padding: 1.2rem 1.5rem; }
+      h1 { font-size: 1.75rem; }
+      .tarif-price { font-size: 1.75rem; }
+      .design-footer { flex-direction: column; align-items: flex-start; gap: .5rem; }
+      .design-cta { align-self: stretch; justify-content: center; }
+    }
+
+    /* ══ TOUCH : supprime les hover transforms sur mobile ══ */
+    @media (hover: none) and (pointer: coarse) {
+      .service-card:hover { transform: none; }
+      .step:hover { transform: none; }
+      .proj-card:hover { transform: none; }
+      .design-card:hover { transform: none; }
+      .tarif-card:hover { transform: none; }
     }
   </style>
 </head>
@@ -551,12 +628,12 @@
   <ul class="nav-center">
     <li><a href="#accueil">Accueil</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#apropos">À propos  </a></li>
-    <li><a href="#modele">Modèle de design</a></li>
+    <li><a href="#apropos">À propos</a></li>
+    <li><a href="#modele">Modèle</a></li>
     <li><a href="#realisation">Réalisations</a></li>
     <li><a href="#process">Méthode</a></li>
     <li><a href="#tarifs">Tarifs</a></li>
-    <li><a href="#contact">Nous contacter</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
   <button class="burger" id="burger" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -567,7 +644,7 @@
 <div class="mobile-menu" id="mobileMenu">
   <a href="#accueil"     onclick="closeMenu()">Accueil</a>
   <a href="#services"    onclick="closeMenu()">Services</a>
-  <a href="#apropos"    onclick="closeMenu()">À propos</a>
+  <a href="#apropos"     onclick="closeMenu()">À propos</a>
   <a href="#modele"      onclick="closeMenu()">Modèle de design</a>
   <a href="#realisation" onclick="closeMenu()">Réalisations</a>
   <a href="#process"     onclick="closeMenu()">Méthode</a>
@@ -607,7 +684,7 @@
       </div>
       <div class="hero-stats">
         <div class="hstat"><span class="hstat-num">24h</span><span class="hstat-label">Délai de réponse</span></div>
-        <div class="hstat"><span class="hstat-num">∞</span><span class="hstat-label">Projets possibles</span></div>
+      
       </div>
     </div>
 
@@ -657,11 +734,11 @@
         <p>Création d'un logo simple et d'une charte graphique cohérente pour votre image de marque.</p>
         <span class="service-tag">Logo · Charte · Typo</span>
       </div>
-	  <div class="service-card reveal">
-         <div class="service-icon">⚙️</div>
-        <h3>Développement & applications </h3>
-        <p>Des solutions techniques avancées pour aller au-delà d'un site vitrine</p>
-        <span class="service-tag">Applications mobile et  web sur mesure</span>
+      <div class="service-card reveal">
+        <div class="service-icon">⚙️</div>
+        <h3>Développement & applications</h3>
+        <p>Des solutions techniques avancées pour aller au-delà d'un site vitrine.</p>
+        <span class="service-tag">Applications mobile et web sur mesure</span>
       </div>
     </div>
   </div>
@@ -674,8 +751,7 @@
     <h2 class="reveal">À propos de FA Digital</h2>
     <p class="section-desc reveal">Une agence web jeune et passionnée, dédiée à la réussite digitale des petites entreprises et des indépendants.</p>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center" class="about-grid">
-
+    <div class="about-grid">
       <!-- Texte -->
       <div class="reveal" style="display:flex;flex-direction:column;gap:1.2rem">
         <span style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(0,230,118,.07);border:1px solid rgba(0,230,118,.18);color:var(--accent);font-size:.73rem;font-weight:600;padding:.3rem .85rem;border-radius:999px;letter-spacing:.07em;text-transform:uppercase;width:fit-content">
@@ -697,39 +773,33 @@
             <span style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--accent)">24h</span>
             <span style="font-size:.74rem;color:var(--muted);letter-spacing:.03em">Délai de réponse</span>
           </div>
-          <div style="display:flex;flex-direction:column;gap:.15rem">
-            <span style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--accent)">∞</span>
-            <span style="font-size:.74rem;color:var(--muted);letter-spacing:.03em">Projets possibles</span>
-          </div>
+        
         </div>
         <a href="#contact" class="btn-primary" style="width:fit-content">Démarrer un projet →</a>
       </div>
 
       <!-- Valeurs -->
-      <div class="reveal" style="position:relative;padding:2.5rem;border-radius:20px;border:1px solid rgba(0,230,118,.14);background:rgba(255,255,255,.018)">
+      <div class="reveal about-values" style="position:relative;padding:2.5rem;border-radius:20px;border:1px solid rgba(0,230,118,.14);background:rgba(255,255,255,.018)">
         <div class="corner-tr"></div><div class="corner-bl"></div>
         <div style="display:flex;flex-direction:column;gap:1rem">
-
-          <div class="service-card" style="display:flex;align-items:flex-start;gap:.9rem;transform:none">
-            <div class="service-icon">🎯</div>
+          <div class="service-card" style="display:flex;align-items:flex-start;gap:.9rem">
+            <div class="service-icon" style="flex-shrink:0">🎯</div>
             <div><h3 style="margin-bottom:.2rem">Proximité & écoute</h3><p>Nous prenons le temps de comprendre votre activité pour vous proposer des solutions vraiment adaptées.</p></div>
           </div>
-          <div class="service-card" style="display:flex;align-items:flex-start;gap:.9rem;transform:none">
-            <div class="service-icon">⚡</div>
+          <div class="service-card" style="display:flex;align-items:flex-start;gap:.9rem">
+            <div class="service-icon" style="flex-shrink:0">⚡</div>
             <div><h3 style="margin-bottom:.2rem">Performance avant tout</h3><p>Chaque site est optimisé pour la vitesse, le SEO et l'expérience utilisateur — sur tous les appareils.</p></div>
           </div>
-          <div class="service-card" style="display:flex;align-items:flex-start;gap:.9rem;transform:none">
-            <div class="service-icon">🤝</div>
+          <div class="service-card" style="display:flex;align-items:flex-start;gap:.9rem">
+            <div class="service-icon" style="flex-shrink:0">🤝</div>
             <div><h3 style="margin-bottom:.2rem">Relation de confiance</h3><p>Transparence sur les tarifs, suivi après livraison et disponibilité pour chaque ajustement.</p></div>
           </div>
-          <div class="service-card" style="display:flex;align-items:flex-start;gap:.9rem;transform:none">
-            <div class="service-icon">💡</div>
+          <div class="service-card" style="display:flex;align-items:flex-start;gap:.9rem">
+            <div class="service-icon" style="flex-shrink:0">💡</div>
             <div><h3 style="margin-bottom:.2rem">Créativité & modernité</h3><p>Des designs uniques, pensés pour refléter votre image de marque et vous démarquer de la concurrence.</p></div>
           </div>
-
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -751,7 +821,6 @@
 
     <div class="design-grid">
 
-      <!-- 1. Artisan luxe sombre -->
       <div class="design-card reveal" data-cat="vitrine">
         <div class="design-preview" style="background:#0f0f0f;padding:16px;font-family:Georgia,serif">
           <p style="color:#c9a96e;font-size:8px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:5px">Artisan depuis 1992</p>
@@ -770,7 +839,6 @@
         </div>
       </div>
 
-      <!-- 2. E-commerce clair -->
       <div class="design-card reveal" data-cat="ecommerce">
         <div class="design-preview" style="background:#fff;padding:0;font-family:system-ui,sans-serif;overflow:hidden">
           <div style="background:#2563eb;padding:4px 12px;display:flex;justify-content:space-between">
@@ -801,7 +869,6 @@
         </div>
       </div>
 
-      <!-- 3. Restaurant gastronomique -->
       <div class="design-card reveal" data-cat="restaurant">
         <div class="design-preview" style="background:#1a0a00;padding:0;font-family:Georgia,serif;overflow:hidden">
           <div style="padding:18px 14px 8px;text-align:center;border-bottom:1px solid #3d2200">
@@ -829,7 +896,6 @@
         </div>
       </div>
 
-      <!-- 4. Cabinet médical -->
       <div class="design-card reveal" data-cat="pro">
         <div class="design-preview" style="background:#f0faf6;padding:14px;font-family:system-ui,sans-serif">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
@@ -858,7 +924,6 @@
         </div>
       </div>
 
-      <!-- 5. Immobilier luxe -->
       <div class="design-card reveal" data-cat="pro">
         <div class="design-preview" style="background:#0d1117;padding:14px;font-family:system-ui,sans-serif">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
@@ -882,7 +947,6 @@
         </div>
       </div>
 
-      <!-- 6. Photographe portfolio -->
       <div class="design-card reveal" data-cat="vitrine">
         <div class="design-preview" style="background:#fafafa;padding:0;font-family:Georgia,serif;overflow:hidden">
           <div style="padding:9px 13px;display:flex;justify-content:space-between;align-items:center">
@@ -915,20 +979,17 @@
     <h2 class="reveal">Les sites développés par FA Digital</h2>
     <p class="section-desc reveal">Découvrez quelques-uns de nos projets réalisés pour nos clients.</p>
     <div class="gallery-grid">
-
-      <!-- Carte projet — dupliquez ce bloc pour chaque nouveau site -->
       <div class="proj-card reveal">
         <span class="proj-badge">Site vitrine</span>
         <img class="proj-thumb" src="sgpp.png" alt="SGPP">
         <div class="proj-body">
           <p class="proj-title">SGPP</p>
           <p class="proj-desc">Site vitrine professionnel réalisé pour le client SGPP.</p>
-          <a class="proj-link" href="https://falouani368-a11y.github.io/site-web/#top" target="_blank" >
+          <a class="proj-link" href="https://falouani368-a11y.github.io/site-web/#top" target="_blank">
             ↗ Voir le site
           </a>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -1079,20 +1140,17 @@
 </footer>
 
 <script>
-  // ── Back to top ──
   const backTop = document.getElementById('backTop');
   window.addEventListener('scroll', () => {
     backTop.classList.toggle('visible', window.scrollY > 400);
   }, { passive: true });
   backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-  // ── Nav shadow on scroll ──
   const nav = document.getElementById('mainNav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 20);
   }, { passive: true });
 
-  // ── Active nav link ──
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-center a');
   const observer = new IntersectionObserver(entries => {
@@ -1106,7 +1164,6 @@
   }, { rootMargin: '-40% 0px -55% 0px' });
   sections.forEach(s => observer.observe(s));
 
-  // ── Burger menu ──
   const burger = document.getElementById('burger');
   const mobileMenu = document.getElementById('mobileMenu');
   burger.addEventListener('click', () => {
@@ -1121,7 +1178,6 @@
     if (!nav.contains(e.target) && !mobileMenu.contains(e.target)) closeMenu();
   });
 
-  // ── Reveal on scroll ──
   const revealEls = document.querySelectorAll('.reveal');
   const revObs = new IntersectionObserver(entries => {
     entries.forEach((e, i) => {
@@ -1130,7 +1186,6 @@
   }, { threshold: 0.08 });
   revealEls.forEach(el => revObs.observe(el));
 
-  // ── Filtre design ──
   function filterDesign(cat, btn) {
     document.querySelectorAll('.df-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
@@ -1139,7 +1194,6 @@
     });
   }
 
-  // ── Form submit ──
   function handleSubmit(e) {
     e.preventDefault();
     const btn = e.target.querySelector('button');
